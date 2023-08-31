@@ -4,26 +4,30 @@ public class sorting
     {
         for (int i = 0; i < list.length - 1; i++)
         {
-            if (list[i] > list[i + 1])
+            for (int j = list.length - 1; j > 0; j--)
             {
-                int temp = list[i];
-                list[i] = list[i + 1];
-                list[i + 1] = temp;
-                i--;
+                if (list[j] < list[j - 1])
+                {
+                    int temp = list[j];
+                    list[j] = list[j - 1];
+                    list[j - 1] = temp;
+                }
             }
         }
     }
-    
     
     public static void bubble(int[] list)
     {
         for (int i = 0; i < list.length - 1; i++)
         {
-            if (list[i] > list[i + 1])
+            for (int j = 0; j < list.length - 1; j++)
             {
-                int temp = list[i];
-                list[i] = list[i + 1];
-                list[i + 1] = temp;
+                if (list[j] > list[j + 1])
+                {
+                    int temp = list[j];
+                    list[j] = list[j + 1];
+                    list[j + 1] = temp;
+                }
             }
         }
     }
@@ -51,9 +55,59 @@ public class sorting
         }
     }
     
+    public static void mergeSort(int[] list)
+    {
+        mergeSort(0, list.length - 1, list);
+    }
+    
+    public static void mergeSort(int beg, int end, int[] list)
+    {
+        if (beg == end)
+        {
+            return;
+        }
+        int mid = (beg + end) / 2;
+        mergeSort(beg, mid, list);
+        mergeSort(mid + 1, end, list);
+        merge(beg, mid, end, list);
+    }
+    
+    public static void merge(int beg, int mid, int end, int[] list)
+    {
+        int i = beg;
+        int j = mid;
+        int[] newArr = list;
+        int location = beg;
+        while (i <= mid && j <= end)
+        {
+            if (list[i] < list[j])
+            {
+                newArr[location] = list[i];
+                i++;
+                location++;
+            }
+            else
+            {
+                newArr[location] = list[j];
+                j++;
+                location++;
+            }
+        }
+        while (i < mid)
+        {
+            newArr[location] = list[i];
+            location++;
+        }
+        while (j < mid)
+        {
+            newArr[location] = list[j];
+            location++;
+        }
+    }
+    
     public static void testBubble()
     {
-        int[] list = {5, 1, 2, 12, 9};
+        int[] list = {5, 1, 50, 2, 3, 182, 12, 97, 14, 9};
         for (int a : list)
         {
             System.out.print(a + ",");
@@ -68,7 +122,7 @@ public class sorting
     
     public static void testInsertion()
     {
-        int[] list = {5, 1, 2, 12, 9};
+        int[] list = {5, 1, 50, 2, 3, 182, 12, 97, 14, 9};
         for (int a : list)
         {
             System.out.print(a + ",");
@@ -83,13 +137,28 @@ public class sorting
     
     public static void testSelection()
     {
-        int[] list = {5, 1, 2, 12, 9};
+        int[] list = {5, 1, 50, 2, 3, 182, 12, 97, 14, 9};
         for (int a : list)
         {
             System.out.print(a + ",");
         }
         System.out.println();
         selection(list);
+        for (int a : list)
+        {
+            System.out.print(a + ",");
+        }
+    }
+    
+    public static void testMerge()
+    {
+        int[] list = {5, 1, 50, 2, 3, 182, 12, 97, 14, 9};
+        for (int a : list)
+        {
+            System.out.print(a + ",");
+        }
+        System.out.println();
+        mergeSort(list);
         for (int a : list)
         {
             System.out.print(a + ",");
