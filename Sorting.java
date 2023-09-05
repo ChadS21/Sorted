@@ -1,39 +1,33 @@
-public class sorting
+public class Sorting
 {
-    public static void insertion(int[] list)
-    {
-        for (int i = 0; i < list.length - 1; i++)
-        {
-            for (int j = list.length - 1; j > 0; j--)
-            {
-                if (list[j] < list[j - 1])
-                {
-                    int temp = list[j];
-                    list[j] = list[j - 1];
-                    list[j - 1] = temp;
-                }
-            }
-        }
-    }
+    private static int cCount = 0;
+    private static int sCount = 0;;
     
-    public static void bubble(int[] list)
+    public static void bubbleSort(int[] list)
     {
+        int sCount = 0;
+        int cCount = 0;
         for (int i = 0; i < list.length - 1; i++)
         {
             for (int j = 0; j < list.length - 1; j++)
             {
                 if (list[j] > list[j + 1])
                 {
+                    sCount++;
+                    cCount++;
                     int temp = list[j];
                     list[j] = list[j + 1];
                     list[j + 1] = temp;
                 }
             }
         }
+        System.out.println(", " + cCount + ", " + sCount);
     }
     
-    public static void selection(int[] list)
+    public static void selectionSort(int[] list)
     {
+        int sCount = 0;
+        int cCount = 0;
         for (int i = 0; i < list.length - 1; i++)
         {
             int min = list[i];
@@ -48,16 +42,38 @@ public class sorting
             }
             if (location != i)
             {
+                sCount++;
+                cCount++;
                 int temp = min;
                 list[location] = list[i];
                 list[i] = temp;
             }
         }
+        System.out.println(", " + cCount + ", " + sCount);
+    }
+    
+    public static void insertionSort(int[] list)
+    {
+        for (int i = 1; i < list.length; i++)
+        {
+            int j = i;
+            while (j != 0 && list[j] < list[j - 1])
+            {
+                sCount++;
+                cCount++;
+                int temp = list[j];
+                list[j] = list[j - 1];
+                list[j - 1] = temp;
+                j--;
+            }
+        }
+        System.out.println(", " + cCount + ", " + sCount);
     }
     
     public static void mergeSort(int[] list)
     {
         mergeSort(0, list.length - 1, list);
+        System.out.println(", " + cCount + ", " + sCount);
     }
     
     public static void mergeSort(int beg, int end, int[] list)
@@ -85,12 +101,16 @@ public class sorting
                 newArr[location] = list[i];
                 i++;
                 location++;
+                cCount++;
+                sCount++;
             }
             else
             {
                 newArr[location] = list[j];
                 j++;
                 location++;
+                cCount++;
+                sCount++;
             }
         }
         while (i <= mid)
@@ -98,12 +118,14 @@ public class sorting
             newArr[location] = list[i];
             i++;
             location++;
+            sCount++;
         }
         while (j <= end)
         {
             newArr[location] = list[j];
             j++;
             location++;
+            sCount++;
         }
         for (int x = beg; x <= end; x++)
         {
@@ -119,7 +141,7 @@ public class sorting
             System.out.print(a + ",");
         }
         System.out.println();
-        bubble(list);
+        bubbleSort(list);
         for (int a : list)
         {
             System.out.print(a + ",");
@@ -134,7 +156,7 @@ public class sorting
             System.out.print(a + ",");
         }
         System.out.println();
-        insertion(list);
+        insertionSort(list);
         for (int a : list)
         {
             System.out.print(a + ",");
@@ -149,7 +171,7 @@ public class sorting
             System.out.print(a + ",");
         }
         System.out.println();
-        selection(list);
+        selectionSort(list);
         for (int a : list)
         {
             System.out.print(a + ",");
