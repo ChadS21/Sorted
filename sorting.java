@@ -75,8 +75,8 @@ public class sorting
     public static void merge(int beg, int mid, int end, int[] list)
     {
         int i = beg;
-        int j = mid;
-        int[] newArr = list;
+        int j = mid + 1;
+        int[] newArr = new int[list.length];
         int location = beg;
         while (i <= mid && j <= end)
         {
@@ -93,15 +93,21 @@ public class sorting
                 location++;
             }
         }
-        while (i < mid)
+        while (i <= mid)
         {
             newArr[location] = list[i];
+            i++;
             location++;
         }
-        while (j < mid)
+        while (j <= end)
         {
             newArr[location] = list[j];
+            j++;
             location++;
+        }
+        for (int x = beg; x <= end; x++)
+        {
+            list[x] = newArr[x];
         }
     }
     
