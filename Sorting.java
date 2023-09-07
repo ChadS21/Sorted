@@ -1,33 +1,33 @@
 public class Sorting
 {
-    private static int cCount = 0;
-    private static int sCount = 0;;
+    private static long comparisons = 0;
+    private static long swaps = 0;
     
     public static void bubbleSort(int[] list)
     {
-        int sCount = 0;
-        int cCount = 0;
+        long sCount = 0;
+        long cCount = 0;
         for (int i = 0; i < list.length - 1; i++)
         {
             for (int j = 0; j < list.length - 1; j++)
             {
+                cCount++;
                 if (list[j] > list[j + 1])
                 {
                     sCount++;
-                    cCount++;
                     int temp = list[j];
                     list[j] = list[j + 1];
                     list[j + 1] = temp;
                 }
             }
         }
-        System.out.println(", " + cCount + ", " + sCount);
+        System.out.print(", " + cCount + ", " + sCount);
     }
     
     public static void selectionSort(int[] list)
     {
-        int sCount = 0;
-        int cCount = 0;
+        long sCount = 0;
+        long cCount = 0;
         for (int i = 0; i < list.length - 1; i++)
         {
             int min = list[i];
@@ -40,23 +40,26 @@ public class Sorting
                     location = j;
                 }
             }
+            cCount++;
             if (location != i)
             {
                 sCount++;
-                cCount++;
                 int temp = min;
                 list[location] = list[i];
                 list[i] = temp;
             }
         }
-        System.out.println(", " + cCount + ", " + sCount);
+        System.out.print(", " + cCount + ", " + sCount);
     }
     
     public static void insertionSort(int[] list)
     {
+        long sCount = 0;
+        long cCount = 0;
         for (int i = 1; i < list.length; i++)
         {
             int j = i;
+            cCount++;
             while (j != 0 && list[j] < list[j - 1])
             {
                 sCount++;
@@ -67,13 +70,13 @@ public class Sorting
                 j--;
             }
         }
-        System.out.println(", " + cCount + ", " + sCount);
+        System.out.print(", " + cCount + ", " + sCount);
     }
     
     public static void mergeSort(int[] list)
     {
         mergeSort(0, list.length - 1, list);
-        System.out.println(", " + cCount + ", " + sCount);
+        System.out.print(", " + comparisons + ", " + swaps);
     }
     
     public static void mergeSort(int beg, int end, int[] list)
@@ -92,8 +95,8 @@ public class Sorting
     {
         int i = beg;
         int j = mid + 1;
-        int[] newArr = new int[list.length];
-        int location = beg;
+        int[] newArr = new int[end - beg + 1];
+        int location = 0;
         while (i <= mid && j <= end)
         {
             if (list[i] < list[j])
@@ -101,16 +104,16 @@ public class Sorting
                 newArr[location] = list[i];
                 i++;
                 location++;
-                cCount++;
-                sCount++;
+                comparisons++;
+                swaps++;
             }
             else
             {
                 newArr[location] = list[j];
                 j++;
                 location++;
-                cCount++;
-                sCount++;
+                comparisons++;
+                swaps++;
             }
         }
         while (i <= mid)
@@ -118,18 +121,18 @@ public class Sorting
             newArr[location] = list[i];
             i++;
             location++;
-            sCount++;
+            swaps++;
         }
         while (j <= end)
         {
             newArr[location] = list[j];
             j++;
             location++;
-            sCount++;
+            swaps++;
         }
         for (int x = beg; x <= end; x++)
         {
-            list[x] = newArr[x];
+            list[x] = newArr[x - beg];
         }
     }
     
