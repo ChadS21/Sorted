@@ -34,16 +34,17 @@ public class Sorting
             int location = i;
             for (int j = i + 1; j < list.length; j++)
             {
+                cCount++;
                 if (list[j] < min)
                 {
                     min = list[j];
                     location = j;
                 }
             }
-            cCount++;
+            sCount++;
             if (location != i)
             {
-                sCount++;
+                cCount++;
                 int temp = min;
                 list[location] = list[i];
                 list[i] = temp;
