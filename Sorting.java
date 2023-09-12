@@ -4,8 +4,7 @@ public class Sorting
     private static long swaps = 0;
     
     /**
-    * Method that sorts an array by pushing higher values below values in
-    * the array that are lower
+    * Sorts an array by pushing higher values below all lower values
     */
     public static void bubbleSort(int[] arr) {
         long swaps = 0;
@@ -29,8 +28,8 @@ public class Sorting
     }
     
     /**
-    * Method that sorts by swapping values in an array with the value that
-    * is supposed to be at that index when sorted
+    * Sorts an array by swapping values in with the value that
+    * belongs at that index when sorted
     */
     public static void selectionSort(int[] arr) {
         long swaps = 0;
@@ -64,7 +63,7 @@ public class Sorting
     }
     
     /**
-    * Method that sorts by swapping values with all higher preceding values
+    * Sorts an array by swapping values with all higher preceding values
     */
     public static void insertionSort(int[] arr) {
         long swaps = 0;
@@ -89,7 +88,7 @@ public class Sorting
     }
     
     /**
-    * Method that initiates merge sort for an array
+    * Initiates merge sort for an array
     */
     public static void mergeSort(int[] arr) {
         mergeSort(0, arr.length - 1, arr);
@@ -97,8 +96,7 @@ public class Sorting
     }
     
     /**
-    * Method that sorts by splitting an array into individual pieces and
-    * merges the pieces into a sorted order
+    * Sorts an array by breaking it down and merges back into a sorted order
     */
     public static void mergeSort(int start, int end, int[] arr) {
         // Base case
