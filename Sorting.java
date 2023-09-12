@@ -10,6 +10,7 @@ public class Sorting
     public static void bubbleSort(int[] arr) {
         long swaps = 0;
         long comparisons = 0;
+        
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1; j++) {
                 comparisons++;
@@ -23,6 +24,7 @@ public class Sorting
                 }
             }
         }
+        
         System.out.print(", " + comparisons + ", " + swaps);
     }
     
@@ -57,6 +59,7 @@ public class Sorting
                 arr[i] = temp;
             }
         }
+        
         System.out.print(", " + comparisons + ", " + swaps);
     }
     
@@ -66,6 +69,7 @@ public class Sorting
     public static void insertionSort(int[] arr) {
         long swaps = 0;
         long comparisons = 0;
+        
         for (int i = 1; i < arr.length; i++) {
             int j = i;
             comparisons++;
@@ -80,6 +84,7 @@ public class Sorting
                 j--;
             }
         }
+        
         System.out.print(", " + comparisons + ", " + swaps);
     }
     
@@ -146,6 +151,7 @@ public class Sorting
             location++;
             swaps++;
         }
+        
         while (j <= end) {
             newArr[location] = arr[j];
             j++;
@@ -161,11 +167,14 @@ public class Sorting
     
     public static void testBubble() {
         int[] arr = {5, 1, 50, 2, 3, 182, 12, 97, 14, 9};
+        
         for (int a : arr) {
             System.out.print(a + ",");
         }
+        
         System.out.println();
         bubbleSort(arr);
+        
         for (int a : arr) {
             System.out.print(a + ",");
         }
@@ -173,11 +182,14 @@ public class Sorting
     
     public static void testInsertion() {
         int[] arr = {5, 1, 50, 2, 3, 182, 12, 97, 14, 9};
+        
         for (int a : arr) {
             System.out.print(a + ",");
         }
+        
         System.out.println();
         insertionSort(arr);
+        
         for (int a : arr) {
             System.out.print(a + ",");
         }
@@ -185,11 +197,14 @@ public class Sorting
     
     public static void testSelection() {
         int[] arr = {5, 1, 50, 2, 3, 182, 12, 97, 14, 9};
+        
         for (int a : arr) {
             System.out.print(a + ",");
         }
+        
         System.out.println();
         selectionSort(arr);
+        
         for (int a : arr) {
             System.out.print(a + ",");
         }
@@ -197,11 +212,14 @@ public class Sorting
     
     public static void testMerge() {
         int[] arr = {5, 1, 50, 2, 3, 182, 12, 97, 14, 9};
+        
         for (int a : arr) {
             System.out.print(a + ",");
         }
+        
         System.out.println();
         mergeSort(arr);
+        
         for (int a : arr) {
             System.out.print(a + ",");
         }
