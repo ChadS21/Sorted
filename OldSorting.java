@@ -1,4 +1,4 @@
-public class Sorting
+public class OldSorting
 {
     private static long comparisons = 0;
     private static long swaps = 0;
@@ -9,10 +9,9 @@ public class Sorting
     public static void bubbleSort(int[] arr) {
         long swaps = 0;
         long comparisons = 0;
-        int sorted = 0;
         
         for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - (1 + sorted); j++) {
+            for (int j = 0; j < arr.length - 1; j++) {
                 comparisons++;
                 
                 // Swaps if needed
@@ -23,7 +22,6 @@ public class Sorting
                     arr[j + 1] = temp;
                 }
             }
-            sorted++;
         }
         
         System.out.print(", " + comparisons + ", " + swaps);
@@ -36,7 +34,7 @@ public class Sorting
     public static void selectionSort(int[] arr) {
         long swaps = 0;
         long comparisons = 0;
-            
+        
         // Iterates through array to allow swaps if necessary
         for (int i = 0; i < arr.length - 1; i++) {
             int min = arr[i];
@@ -104,13 +102,6 @@ public class Sorting
         // Base case
         if (start == end) {
             return;
-        } else if (end - start == 1) {
-            if (arr[start] > arr[end])
-            {
-                int temp = arr[end];
-                arr[end] = arr[start];
-                arr[start] = temp;
-            }
         } else {
             int mid = (start + end) / 2;
             mergeSort(start, mid, arr);
