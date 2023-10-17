@@ -9,10 +9,9 @@ public class Sorting
     public static void bubbleSort(int[] arr) {
         long swaps = 0;
         long comparisons = 0;
-        int sorted = 0;
         
         for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - (1 + sorted); j++) {
+            for (int j = 0; j < arr.length - (1 + i); j++) {
                 comparisons++;
                 
                 // Swaps if needed
@@ -23,7 +22,6 @@ public class Sorting
                     arr[j + 1] = temp;
                 }
             }
-            sorted++;
         }
         
         System.out.print(", " + comparisons + ", " + swaps);
